@@ -1,0 +1,38 @@
+R version 3.2.1 (2015-06-18) -- "World-Famous Astronaut"
+Copyright (C) 2015 The R Foundation for Statistical Computing
+Platform: x86_64-w64-mingw32/x64 (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+[Workspace loaded from ~/.RData]
+
+# Létrehozunk egy változót a mappának ahol a beolvasandó fájlok találhatóak
+és be is olvassuk a training.csv-t és a test.csv-t
+> data.dir<-'C:/Users/Esoxlucius/Desktop/kaggle/'
+> train.file <- paste0(data.dir, 'training.csv')
+> test.file  <- paste0(data.dir, 'test.csv')
+> d.train <- read.csv(train.file, stringsAsFactors=F)
+> cores<-4
+> library(doSNOW)
+> cl <- makeCluster(cores)
+> registerDoSNOW(cl)
+> clusterExport(cl, c("%do%","foreach"))
+
+
+count<-foreach(i=1:nrow(d.train),.combine=rbind) %do% {
+  for(j=1:30
+  x<-sum(!is.na(d.train[,i])
+  data.frame(colnames(d.train),x)
+}
+
+
